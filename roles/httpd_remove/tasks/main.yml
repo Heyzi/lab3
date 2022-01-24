@@ -1,0 +1,9 @@
+- name: Remove the Apache package
+  yum:
+    name: httpd
+    state: absent
+
+- name: Remove my site
+  file:
+    path: /var/www/html/index.html
+    state: absent

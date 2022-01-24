@@ -1,0 +1,6 @@
+anonymous_enable: yes
+local_enable: yes
+write_enable: yes
+anon_upload_enable: yes
+no_anon_password: yes
+anon_root: /var/ftp/pub

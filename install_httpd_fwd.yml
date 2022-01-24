@@ -1,0 +1,4 @@
+- hosts: nodes
+  roles:
+    - ftp_install
+

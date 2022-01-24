@@ -1,0 +1,11 @@
+- name: disable 80 port
+  firewalld:
+     zone: public
+     port: 80/tcp
+     permanent: true
+     state: disabled
+
+- name: Reload firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

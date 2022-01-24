@@ -1,0 +1,27 @@
+- name: Install Apache Web Server
+  dnf:
+    name: 
+     - httpd
+     - mod_ssl
+    state: latest
+    update_cache: true
+
+- name: start httpd
+  systemd:
+    name: httpd
+    enabled: 'yes'
+    state: started
+  
+
+- name: Get service facts
+  service_facts: 
+
+- name: Check status of httpd
+  debug:
+    var: 'ansible_facts.services["httpd.service"].state'
+
+- name: Creating custom index.html
+  copy:
+    dest: /var/www/html/index.html
+    content: Welcome to my web server
+

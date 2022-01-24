@@ -1,0 +1,4 @@
+- hosts: nodes
+  roles:
+    - httpd_remove
+    - firewalld_remove_ports

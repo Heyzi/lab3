@@ -1,0 +1,30 @@
+---
+- name: Install firewalld
+  package:
+    name: firewalld
+    state: latest
+
+- name: start firewalld
+  systemd:
+    name: firewalld
+    enabled: yes
+    state: started
+
+- name: enable ftp
+  firewalld:
+    zone: public
+    service: ftp
+    permanent: true
+    state: enabled
+
+- name: enable ssh
+  firewalld:
+    zone: public
+    port: 22/tcp
+    permanent: true
+    state: enabled
+
+- name: Reload firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

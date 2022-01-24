@@ -1,0 +1,23 @@
+- name: Verify ftp installation
+  hosts: nodes
+  tasks:
+  - name: Ensure ftp is at the latest version
+    dnf:
+      name: vsftpd
+      state: latest
+      update_cache: true 
+    notify:
+    - restart
+
+  - name: Ensure ftp is running
+    systemd:
+      name: vsftpd
+      enabled: 'yes'
+      state: started
+
+  handlers:
+    - name: restart
+      systemd:
+        name: httpd
+        state: restarted
+
