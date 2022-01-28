@@ -1,4 +1,5 @@
+---
 - hosts: nodes
   roles:
-    - ftp_install
+    - httpd_install
 
