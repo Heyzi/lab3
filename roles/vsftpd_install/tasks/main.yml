@@ -3,7 +3,7 @@
   dnf:
     name:
       - vsftpd
-      - policycoreutils-python
+      - policycoreutils-python-utils
     state: latest
 #   update_cache: true
 - name: Start vsftpd
