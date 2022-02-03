@@ -31,18 +31,16 @@
     dest: /etc/vsftpd/vsftpd.conf
   notify:
     - restart vsftpd
-- name: SElinux for Anonymous FTP upload
+- name: Configure SElinux boolean
   seboolean:
     name: ftpd_anon_write
-    state: true
+    state: yes
     persistent: yes
-- name: SElinux file context pub
+- name: Configure SElinux context
   sefcontext:
-    target: "/var/ftp/pub"
+    target: '/var/ftp/pub/upload'
     setype: public_content_rw_t
     state: present
-- name: SElinux file context pub
-  sefcontext:
-    target: "/var/ftp/pub/upload"
-    setype: public_content_rw_t
-    state: present
+- name: Apply SElinux context
+  command: restorecon -irv /var/ftp/pub/upload
+
